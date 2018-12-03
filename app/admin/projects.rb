@@ -32,9 +32,9 @@ menu label: "Project", priority: 0
 
     column 'total_fee(k)' do |l|
     	color = 'green'
-    	color = 'red' if l.charge_hours.sum(:take_time)*2 > l.estimated_fee
+    	color = 'red' if l.charge_hours.sum(:take_time)* l.charge_rate*0.8 > l.estimated_fee
     	div(style: "color:#{color}") do
-    		"#{l.charge_hours.sum(:take_time)* l.charge_rate.to_i}"
+    		"#{l.charge_hours.sum(:take_time) * l.charge_rate}"
     	end
     end
 
