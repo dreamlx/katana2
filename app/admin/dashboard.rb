@@ -7,11 +7,11 @@ ActiveAdmin.register_page "Dashboard" do
       span class: "blank_slate" do
         #span I18n.t("active_admin.dashboard_welcome.welcome")
         #small I18n.t("active_admin.dashboard_welcome.call_to_action")
-        small "开项目+评估项目+项目记录时间= 项目耗时成本 1小时"
+        small "创建项目+评估项目+项目记录时间= 项目设立成本--1小时"
         small "2019年,预期年营业收入240万, 单位小时成本3k"
         small "2小时 * 3k = 216k, 20万以下全新领域项目应该减少"
         small "36小时 * 3k = 108k, 10万以下项目适用于复用现有项目"
-        small "极限成本项目为50k, 5万以下项目只适用于完全产品化成品"
+        small "极限成本项目为30k, 设立成本的10倍,3万以下项目只适用于完全产品化成品"
 
       end
     end
