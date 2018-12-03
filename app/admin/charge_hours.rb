@@ -4,6 +4,8 @@ ActiveAdmin.register ChargeHour do
 #
 permit_params :take_time, :project_id
 menu label: "ChargeHour", priority: 1
+#navigation_menu :project
+belongs_to :project, optional: true
 #
 # or
 #
