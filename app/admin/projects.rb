@@ -12,7 +12,7 @@ permit_params :title, :memo, :estimated_fee, :contract_amount, :charge_rate, :pr
 #   permitted
 # end
 
-menu label: "Project", priority: 0
+menu label: "Project", priority: 1
 
   sidebar "Project Details", only: [:show, :edit] do
     ul do

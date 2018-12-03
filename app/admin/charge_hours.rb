@@ -3,7 +3,7 @@ ActiveAdmin.register ChargeHour do
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
 permit_params :take_time, :project_id
-menu label: "ChargeHour", priority: 1
+menu label: "ChargeHour", priority: 2
 #navigation_menu :project
 belongs_to :project, optional: true
 #
