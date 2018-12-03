@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181202131832) do
+ActiveRecord::Schema.define(version: 20181203024842) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20181202131832) do
   end
 
   create_table "charge_hours", force: :cascade do |t|
-    t.integer "take_time"
+    t.float "take_time"
     t.integer "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20181202131832) do
     t.datetime "updated_at", null: false
     t.integer "contract_amount"
     t.text "memo"
-    t.integer "charge_rate"
+    t.float "charge_rate"
   end
 
 end

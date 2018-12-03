@@ -23,6 +23,9 @@ menu label: "Project", priority: 0
     column  '合同金额(k)' do |project|
       project.contract_amount
     end
+    column '可用时间' do |project|
+      project.estimated_fee / project.charge_rate - project.charge_hours.sum(:take_time)
+    end
     column 'total_hours' do |l|
     	l.charge_hours.sum(:take_time)
     end
