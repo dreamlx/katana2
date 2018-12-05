@@ -16,6 +16,7 @@ menu label: "Project", priority: 1
 
   sidebar "Project Details", only: [:show, :edit] do
     ul do
+      li link_to "Add ChargeHour",    new_admin_project_charge_hour_path(resource)
       li link_to "ChargeHour (#{resource.charge_hours.sum(:take_time)})",    admin_project_charge_hours_path(resource)
       
     end
@@ -25,21 +26,21 @@ menu label: "Project", priority: 1
     selectable_column
     column :id
     column :title
-    column '预期收入(k)' do |project|
-      project.estimated_fee
-    end
+    # column '预期收入(k)' do |project|
+    #   project.estimated_fee
+    # end
     column '预期利润/小时利润' do |project|
       profit = project.estimated_fee.to_i * project.profit_rate.to_i / 100
       per_hour = "%.2f" % (profit/(project.estimated_fee / project.charge_rate))
       "#{profit} / #{per_hour}"
     end
-    column  '合同金额(k)' do |project|
-      project.contract_amount
-    end
-    column '可用时间' do |project|
+    # column  '合同金额(k)' do |project|
+    #   project.contract_amount
+    # end
+    column '剩余时间' do |project|
       "%.2f" % (project.estimated_fee / project.charge_rate - project.charge_hours.sum(:take_time))
     end
-    column 'total_hours' do |l|
+    column '累计耗时' do |l|
     	l.charge_hours.sum(:take_time)
     end
 
@@ -52,6 +53,40 @@ menu label: "Project", priority: 1
     end
 
     actions
+  end
+
+  show do
+    attributes_table do
+      row :id
+      row :title
+      row '预期收入(k)' do |project|
+        project.estimated_fee
+      end
+      row  '合同金额(k)' do |project|
+        project.contract_amount
+      end
+      row '剩余时间' do |project|
+        "%.2f" % (project.estimated_fee / project.charge_rate - project.charge_hours.sum(:take_time))
+      end
+      row '累计耗时' do |l|
+        l.charge_hours.sum(:take_time)
+      end
+
+      row 'total_fee(k)' do |l|
+        color = 'green'
+        color = 'red' if l.charge_hours.sum(:take_time)* l.charge_rate*0.8 > l.estimated_fee
+        div(style: "color:#{color}") do
+          "#{l.charge_hours.sum(:take_time) * l.charge_rate}"
+        end
+      end
+
+      row :charge_rate do |project|
+        "%.2f K/hour" % project.charge_rate
+      end
+      row 'profit_rate(risk)' do |project|
+        "%.0f%" % project.profit_rate
+      end
+    end
   end
 
    form do |f|
