@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181203111649) do
+ActiveRecord::Schema.define(version: 20181212043552) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -54,6 +54,10 @@ ActiveRecord::Schema.define(version: 20181203111649) do
     t.text "memo"
     t.float "charge_rate"
     t.integer "profit_rate"
+    t.text "contract_memo"
+    t.integer "opportunity_amount"
+    t.text "opportunity_memo"
+    t.integer "risk_rate"
   end
 
 end
