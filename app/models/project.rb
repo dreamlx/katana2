@@ -1,4 +1,6 @@
 class Project < ApplicationRecord
+	acts_as_paranoid
+	
 	has_many :charge_hours
 
 	before_save :update_estimated_fee

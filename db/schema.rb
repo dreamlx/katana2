@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181212043552) do
+ActiveRecord::Schema.define(version: 20181218124205) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20181212043552) do
     t.integer "opportunity_amount"
     t.text "opportunity_memo"
     t.integer "risk_rate"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_projects_on_deleted_at"
   end
 
 end
